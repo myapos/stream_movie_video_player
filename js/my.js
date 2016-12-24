@@ -1,6 +1,6 @@
 let movies={
-"1": "https://bigcdn.ia3el9bj6x2jcckb4mr8.com/cdnfast1/luq4w7gru3ixexzw6vqlpiuir2r24tumzdb4lxrs36hlp3i4dz7jlvl6bvia/low.mp4",
-"2": "https://bigcdn.ia3el9bj6x2jcckb4mr8.com/cdnfast1/luq4wmbhghixexzw6vs3f7u6rcsy3kzpgyyb3jnqh3aprwjkgr33ctyxpela/normal.mp4",
+"1": "https://bigcdn.ia3el9bj6x2jcckb4mr8.com/cdnfast1/luq4w7gru3ixexzw6vqlpiuir2r24tumzdb4lxrs36hlp3i4dz7mkft6bvia/low.mp4",
+"2": "https://bigcdn.ia3el9bj6x2jcckb4mr8.com/cdnfast1/luq4wpfai7ixexzw6vs3f7u6rbcl2icqtiouyi7g5bijbcsnotv7isrrp5qq/normal.mp4",
 "3": "https://bigcdn.ia3el9bj6x2jcckb4mr8.com/cdnfast1/luq4qyjhghixexzw6uw3fj4g26jrpvezpnhpl5uj6lzko3vmy3ulb5jay5ba/normal.mp4"
 };
 //console.log(movies);
