@@ -12,7 +12,7 @@ const init = () => {
 
 	videoplayer.addEventListener("loadstart", () => {
 	    let vidplayer = document.getElementById("myMoviePlayer");
-	    vidplayer.style.backgroundImage = "url('../../movie_video_player/images/loading2.gif')";
+	    vidplayer.style.backgroundImage = "url('../../stream_movie_video_player/images/loading2.gif')";
 	});
 
 	videoplayer.addEventListener("canplay", () => {
