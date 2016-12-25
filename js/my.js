@@ -1,7 +1,8 @@
 let movies={
 "1": "https://bigcdn.ia3el9bj6x2jcckb4mr8.com/cdnfast1/luq4w7gru3ixexzw6vqlpiuir2r24tumzdb4lxrs36hlo4kaum3n2jifvoxq/low.mp4",
 "2": "https://bigcdn.ia3el9bj6x2jcckb4mr8.com/cdnfast1/luq4wmbhghixexzw6vs3f7u6rcsy3kzpgyyb3jnqh3apqrlwre77r3u2zt2a/normal.mp4",
-"3": "https://bigcdn.ia3el9bj6x2jcckb4mr8.com/cdnfast1/luq4qyjhghixexzw6uw3fj4g26jrpvezpnhpl5uj6lzko3vmy3ulb5jay5ba/normal.mp4"
+"3": "https://bigcdn.ia3el9bj6x2jcckb4mr8.com/cdnfast1/luq4qyjhghixexzw6uw3fj4g26jrpvezpnhpl5uj6lzkp4xqpoqnsmb5vjwq/normal.mp4",
+"4": "https://bigcdn.ia3el9bj6x2jcckb4mr8.com/cdn01/luq5zx4hn7ixexzw6v43dzmate7nm4dnosckynylazor2bc2hitprx3tcydq/normal.mp4"
 };
 //console.log(movies);
 var videoplayer =  document.getElementById("myMoviePlayer");
@@ -77,6 +78,26 @@ videoplayer.src = movies["1"];
 
 }
 
+const setFullScreen = () => {
+	//document.fullScreen = true;
+	debugger;
+	let videoplayer = document.getElementById("myMoviePlayer");
+	if(!stateFC){
+		videoplayer.webkitRequestFullScreen();
+		console.log("moving to fullScreen");
+		stateFC = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
+
+	}
+	else{
+		videoplayer.webkitExitFullscreen();
+		//document.ExitFullscreen();
+		console.log("leaving fullScreen");
+		stateFC = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
+
+	}
+	
+	
+}
 const styleStatus = () => {
 	//debugger;
 	let videoplayer = document.getElementById("myMoviePlayer");
@@ -131,7 +152,7 @@ const pauseMovie = () => {
 }
 
 const loadsubs = (videoplayer,selection) => {
-
+	//debugger;
 	if(selection === "2"){
 			   if(videoplayer.childNodes[3]){
 			   	console.log("removing previous subs from.....",videoplayer);
@@ -161,7 +182,20 @@ const loadsubs = (videoplayer,selection) => {
 			   track.src = "./subs/Battle_of_the_Five_Armies.vvt"; 
 			   videoplayer.appendChild(track);
 	}
-
+	else if(selection === "4"){
+		       
+			   if(videoplayer.childNodes[3]){
+			   	console.log("removing previous subs from.....",videoplayer);
+				videoplayer.removeChild(videoplayer.childNodes[3]);
+			   }
+			   console.log("hey subs are loading in",videoplayer);
+			   let track = document.createElement("track"); 
+			   track.kind = "subtitles"; 
+			   track.label = "Greek"; 
+			   track.srclang = "gr"; 
+			   track.src = "./subs/The_fellowship_of_the_ring .vvt"; 
+			   videoplayer.appendChild(track);
+	}
 	else {
 			//remove subs track for the other movies
 			if(videoplayer.childNodes[3])
