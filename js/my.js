@@ -80,22 +80,36 @@ videoplayer.src = movies["1"];
 
 const setFullScreen = () => {
 	//document.fullScreen = true;
-	debugger;
+	//debugger;
 	let videoplayer = document.getElementById("myMoviePlayer");
 	if(!stateFC){
-		videoplayer.webkitRequestFullScreen();
-		console.log("moving to fullScreen");
-		stateFC = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
-
+		if(browser[0] == "Chromium" || browser[0] == "Chrome"){
+			videoplayer.webkitRequestFullScreen();
+			console.log("moving to fullScreen in Chrome");
+			stateFC = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
+		}
+		else if(browser[0] == "Firefox"){
+			videoplayer.mozRequestFullScreen();
+			console.log("moving to fullScreen in Mozilla");
+			stateFC = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
+		}
 	}
 	else{
-		videoplayer.webkitExitFullscreen();
-		//document.ExitFullscreen();
-		console.log("leaving fullScreen");
-		stateFC = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
-
+		
+		if(browser[0] == "Chromium" || browser[0] == "Chrome"){
+			videoplayer.webkitExitFullscreen();
+			//document.ExitFullscreen();
+			console.log("leaving fullScreen in Chrome");
+			stateFC = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
+		}
+		else if(browser[0] == "Firefox"){
+			videoplayer.mozExitFullscreen();
+			//document.ExitFullscreen();
+			console.log("leaving fullScreen in Mozilla");
+			stateFC = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
+		}
 	}
-	
+		
 	
 }
 const styleStatus = () => {
