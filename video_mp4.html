@@ -10,7 +10,7 @@
 http://www.3playmedia.com/services-features/free-tools/captions-format-converter/
 
 -->
-<body onload="init()" onkeypress="pauseMovie()">
+<body onload="init()" onkeypress="pauseMovie()" onresize="styleStatus()">
 <div id="wrapper">
 	<h1>Please select your movie</h1>
 
@@ -20,11 +20,12 @@ http://www.3playmedia.com/services-features/free-tools/captions-format-converter
 		<option value="2">The Hobbit: The Desolation of Smaug (2013) </option>
 		<option value="3">The Hobbit: The Battle of the Five Armies / Χόμπιτ: Η Μάχη των Πέντε Στρατών (2014) </option>
 	 </select>
-	<div id="status"> </div>
+	<div id="status"></div>
 	<video poster="./images/transparent.png" id="myMoviePlayer" 
 			onclick="pauseMovie()" controls type="video/mp4" autoplay>
 	  	<source src="">
 		Your browser does not support the video tag.
+	<div>sdasd </div>
 	</video>
 
 </div>

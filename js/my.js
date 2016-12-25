@@ -1,6 +1,6 @@
 let movies={
-"1": "https://bigcdn.ia3el9bj6x2jcckb4mr8.com/cdnfast1/luq4w7gru3ixexzw6vqlpiuir2r24tumzdb4lxrs36hlp3i4dz7mkft6bvia/low.mp4",
-"2": "https://bigcdn.ia3el9bj6x2jcckb4mr8.com/cdnfast1/luq4wpfai7ixexzw6vs3f7u6rbcl2icqtiouyi7g5b2zefvqfnb43uygmo5q/normal.mp4",
+"1": "https://bigcdn.ia3el9bj6x2jcckb4mr8.com/cdnfast1/luq4w7gru3ixexzw6vqlpiuir2r24tumzdb4lxrs36hlo4kaum3n2jifvoxq/low.mp4",
+"2": "https://bigcdn.ia3el9bj6x2jcckb4mr8.com/cdnfast1/luq4wmbhghixexzw6vs3f7u6rcsy3kzpgyyb3jnqh3apqrlwre77r3u2zt2a/normal.mp4",
 "3": "https://bigcdn.ia3el9bj6x2jcckb4mr8.com/cdnfast1/luq4qyjhghixexzw6uw3fj4g26jrpvezpnhpl5uj6lzko3vmy3ulb5jay5ba/normal.mp4"
 };
 //console.log(movies);
@@ -12,7 +12,7 @@ var browser;
 let nav = navigator.userAgent;
 browser = nav.match(/Chromium/g) || nav.match(/Chrome/g) || nav.match(/Firefox/g);
 console.log(browser);
-var status = document.getElementById('status');
+
 
 /*AJAX request example*/
 loadDoc = (url) => {
@@ -27,15 +27,21 @@ loadDoc = (url) => {
 }
 
 const init = () => {
+	styleStatus();
+
 	let videoplayer =  document.getElementById("myMoviePlayer");
+	let status = document.getElementById('status');
+
 	videoplayer.addEventListener("loadstart", () => {
 	    let vidplayer = document.getElementById("myMoviePlayer");
+	    let status = document.getElementById('status');
 	    vidplayer.style.backgroundImage = "url('../../stream_movie_video_player/images/loading2.gif')";
 	    status.innerHTML = "Loading movie.................";
 	});
 
 	videoplayer.addEventListener("canplay", () => {
 	    let vidplayer = document.getElementById("myMoviePlayer");
+	    let status = document.getElementById('status');
 	    vidplayer.style.backgroundImage = "url('')";
 	    status.innerHTML = "Playing now.................";
 	});
@@ -47,8 +53,9 @@ const init = () => {
 		stateFC = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
 
 		if (stateFC) {
-		  alert("Full screen enabled");
+		  //alert("Full screen enabled");
 		  console.log("Full screen enabled");
+		  styleStatus();
 		}
 	});
 	}
@@ -61,22 +68,30 @@ const init = () => {
 			stateFC = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
 
 			if (stateFC) {
-			  alert("Full screen enabled");
+			  //alert("Full screen enabled");
 			  console.log("Full screen enabled");
 			}
 		})
 	}
-
-/*Style dynamically status info*/
-
-var rect = videoplayer.getBoundingClientRect();
-console.log("styling status:", rect.top, rect.right, rect.bottom, rect.left);
-
-
-
-
 videoplayer.src = movies["1"];
 
+}
+
+const styleStatus = () => {
+	//debugger;
+	let videoplayer = document.getElementById("myMoviePlayer");
+	let status = document.getElementById('status');
+	/*Style dynamically status info*/
+	let rect = videoplayer.getBoundingClientRect();
+	let offsetTop = 0;
+	let offsetLeft = 0;
+	console.log("styling status:", rect.top, rect.right, rect.bottom, rect.left);
+	//let status = document.getElementById('status');
+	status.style.position = "absolute";
+	status.style.left = rect.left + offsetLeft+"px";
+	status.style.top = rect.top + offsetTop+"px";
+	status.style.zIndex = "10000";
+	
 }
 
 const selectMovie =() => {
@@ -88,8 +103,10 @@ const selectMovie =() => {
 }
 
 const pauseMovie = () => {
-	var videoplayer =  document.getElementById("myMoviePlayer");
-	
+	//debugger;
+	let videoplayer =  document.getElementById("myMoviePlayer");
+	let status = document.getElementById('status');
+
 	if(!paused){
 		videoplayer.pause(); 
 		paused = 1;
